@@ -7,5 +7,93 @@
     <body>
         <h1>Read me</h1>
         <p>myFlix is a web applicattion with information about different movies, directors, and genres. Users can acess information, sign up, update their personal details, and create a list of their favorite movies.</p>
+    
+        <table>
+            <caption>
+                List of URL endpoints and request methods that correlate with each of the operations
+            </caption>
+            <colgroup span="6"></colgroup>
+            <tr>
+                <th>#</th>
+                <th>Business logic</th>
+                <th>URL</th>
+                <th>HTTP Method</th>
+                <th>Request body data format</th>
+                <th>Response body data format</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Return a list of all movies to the user</td>
+                <td>/movies</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object holding data about all the movies</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user</td>
+                <td>/movies/[Title]</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object holding data about a single movie, containing a title, description, genre, director, image URL. Example:<br><code>{<br> "Title": "Big Fish",<br> "Description": "A frustrated son tries to determine the fact from fiction in his dying father's life.",<br> "Genre": {<br> "Name": "Adventure",<br> "Description": "Genre description."<br> },<br> "Director": {<br> "Name": "Tim Burton",<br> "Bio": "Timothy Walter Burton was born in Burbank, California, to Jean Rae (Erickson), who owned a cat-themed gift shop, and William Reed Burton, who worked for the Burbank Park and Recreation Department. He spent most of his childhood as a recluse, drawing cartoons, and watching old movies (he was especially fond of films with Vincent Price). When he was in the ninth grade, his artistic talent was recognized by a local garbage company, when he won a prize for an anti-litter poster he designed. The company placed this poster on all of their garbage trucks for a year. After graduating from high school, he attended California Institute of the Arts. Like so many others who graduated from that school, Burton's first job was as an animator for Disney. (...)",<br> "Birth": "1958-08-25",<br> "Death": ""<br>},<br> "ImageURL": "https://www.imdb.com/title/tt0319061/mediaviewer/rm344332545/?ref_=tt_ov_i",<br> "Featured": false<br> };</code></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
+                <td>/movies/[Genre]/[Name]</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object holding data about a genre, containing a name, description. Example: <br><code>{<br> "Name": "Adventure",<br> "Description": "Genre description."<br> };</code></td>
+            </tr></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Return data about a director (bio, birth year, death year) by name</td>
+                <td>/movies/[Director]/[Name]</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object holding data about a director, containing a name, bio, birth year, death year. Example: <br><code>{<br> "Name": "Tim Burton",<br> "Bio": "Timothy Walter Burton was born in Burbank, California, to Jean Rae (Erickson), who owned a cat-themed gift shop, and William Reed Burton, who worked for the Burbank Park and Recreation Department. He spent most of his childhood as a recluse, drawing cartoons, and watching old movies (he was especially fond of films with Vincent Price). When he was in the ninth grade, his artistic talent was recognized by a local garbage company, when he won a prize for an anti-litter poster he designed. The company placed this poster on all of their garbage trucks for a year. After graduating from high school, he attended California Institute of the Arts. Like so many others who graduated from that school, Burton's first job was as an animator for Disney. (...)",<br> "Birth": "1958-08-25",<br> "Death": ""<br> };</code></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Allow new users to register</td>
+                <td>/users</td>
+                <td>POST</td>
+                <td>A JSON object holding data about the user to add, structured like:<br> <code>{<br> "name": "Joana Martins",<br> "favoriteMovies": []<br> };<br></code></td>
+                <td>A JSON object holding data about the user that was added, including an ID:<br> <code>{<br> "id": "7656edb2-7437-4d0f-baa3-fa6ad60494ef",<br> "name": "Joana Martins",<br> "favoriteMovies": []<br> };<br></code></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Allow users to update their user info (username)</td>
+                <td>/users/[ID]</td>
+                <td>PUT</td>
+                <td>None</td>
+                <td>A message indicating the username was updated</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added)</td>
+                <td>/users/[ID]/[Favorite%20Movie]</td>
+                <td>POST</td>
+                <td>A JSON object holding data about the user to add, structured like:<br> <code>{<br> "name": "Joana Martins",<br> "favoriteMovies": []<br> };<br></code></td>
+                <td>A message indicating the movie was updated</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed)</td>
+                <td>/users/[ID]/[Favorite%20Movie]</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>A message indicating the movie was removed</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Allow existing users to deregister (showing only a text that a user has been removed)</td>
+                <td>/users/[ID]</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>A message indicating the user was removed</td>
+            </tr>
+        </table>
     </body>
 </html>
