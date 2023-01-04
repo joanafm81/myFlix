@@ -59,13 +59,13 @@
                 <td>Allow new users to register</td>
                 <td>/users</td>
                 <td>POST</td>
-                <td>A JSON object holding data about the user to add, structured like:<br> <code>{<br> "name": "Joana Martins",<br> "favoriteMovies": []<br> };<br></code></td>
-                <td>A JSON object holding data about the user that was added, including an ID:<br> <code>{<br> "id": "7656edb2-7437-4d0f-baa3-fa6ad60494ef",<br> "name": "Joana Martins",<br> "favoriteMovies": []<br> };<br></code></td>
+                <td>A JSON object holding data about the user to add, structured like:<br> <code>{<br> "Username": "joanafm",<br> "Password": "12345678",<br> "Email": "joanafm@ua.pt",<br> "Birthday": "1981-12-15", <br> "FavoriteMovies": []<br> };<br></code></td>
+                <td>A JSON object holding data about the user that was added, including an ID:<br> <code>{<br> "_id": "7656edb2-7437-4d0f-baa3-fa6ad60494ef",<br> "Username": "Joana Martins",<br> "Password": "12345678",<br> "Email": "joanafm@ua.pt",<br> "Birthday": "1981-12-15", <br> "FavoriteMovies": []<br> };<br></code></td>
             </tr>
             <tr>
                 <td>6</td>
                 <td>Allow users to update their user info (username)</td>
-                <td>/users/[ID]</td>
+                <td>/users/[Username]</td>
                 <td>PUT</td>
                 <td>None</td>
                 <td>A message indicating the username was updated</td>
@@ -73,15 +73,15 @@
             <tr>
                 <td>7</td>
                 <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added)</td>
-                <td>/users/[ID]/[Favorite%20Movie]</td>
+                <td>/users/[Username]/movies/[MovieId]</td>
                 <td>POST</td>
-                <td>A JSON object holding data about the user to add, structured like:<br> <code>{<br> "name": "Joana Martins",<br> "favoriteMovies": []<br> };<br></code></td>
+                <td>A JSON object holding data about the user to add, structured like:<br> <code>{<br> "Username": "joanafm",<br> "Password": "12345678",<br> "Email": "joanafm@ua.pt",<br> "Birthday": "1981-12-15", <br> "FavoriteMovies": []<br> };<br></code></td>
                 <td>A message indicating the movie was updated</td>
             </tr>
             <tr>
                 <td>8</td>
                 <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed)</td>
-                <td>/users/[ID]/[Favorite%20Movie]</td>
+                <td>/users/[Username]/movies/[MovieId]</td>
                 <td>DELETE</td>
                 <td>None</td>
                 <td>A message indicating the movie was removed</td>
