@@ -5,6 +5,8 @@ passport = require('passport');
 
 require('./passport'); // My local passport file
 
+const Models = require('./models.js');
+let Users = Models.User;
 let generateJWTToken = (user) => {
     return jwt.sign(user, jwtSecret, {
       subject: user.Username, // This is the username I'm encoding in the JWT
@@ -23,6 +25,7 @@ module.exports = (router) => {
             user: user
           });
         }
+
         req.login(user, { session: false }, (error) => {
           if (error) {
             res.send(error);
