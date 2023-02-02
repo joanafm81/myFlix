@@ -55,7 +55,7 @@ app.use(express.static('public'));
 
 //// READ - Express GET route located at the endpoint "/movies" that returns a JSON object containing data about all movies
 
-app.get('/movies', /*passport.authenticate('jwt', { session: false }),*/(req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
         .then((movies) => {
             res.status(200).json(movies);
