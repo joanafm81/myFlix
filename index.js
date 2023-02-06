@@ -16,10 +16,10 @@ const express = require('express'),
 let auth = require('./auth')(app);
 require('./passport');
 
-/*app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
     extended: true
-}));*/
+}));
 
 //const cors = require('cors');
 app.use(cors());
