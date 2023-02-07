@@ -11,10 +11,10 @@ const express = require('express'),
     Models = require('./models.js'),
     Movies = Models.Movie,
     Users = Models.User,
-    cors = require('cors'),
-    passport = require('passport');
-let auth = require('./auth')(app);
-require('./passport');
+    cors = require('cors');
+//passport = require('passport');
+//let auth = require('./auth')(app);
+//require('./passport');
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -24,9 +24,9 @@ app.use(express.urlencoded({
 //const cors = require('cors');
 app.use(cors());
 
-//let auth = require('./auth')(app);
-//const passport = require('passport');
-//require('./passport');
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
 
 const { check, validationResult } = require('express-validator');
 
